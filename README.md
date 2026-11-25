@@ -34,7 +34,7 @@ O professor escolhe entre dois modos:
 Você precisa do [Node.js](https://nodejs.org/) instalado.
 
 1. Crie uma conta grátis em https://dash.cloudflare.com/sign-up (não pede cartão).
-2. Abra `servidor/wrangler.toml` e troque `SEU-USUARIO` pelo seu usuário do GitHub. Só os sites listados ali podem usar a IA.
+2. Confira `servidor/wrangler.toml`: só os sites listados em `ORIGENS` podem usar a IA (o endereço do site já está lá).
 3. No terminal, dentro da pasta `servidor`, rode:
 
    ```
@@ -64,14 +64,6 @@ Mostra quantas pessoas entram, quais ferramentas mais abrem e quantas atividades
 2. Coloque o código em `js/config.js`, na linha `const CONTADOR = '';`.
 3. Os números ficam em `https://SEU-CODIGO.goatcounter.com`.
 
-## Antes da primeira publicação
-
-Troque `SEU-USUARIO` pelo seu usuário do GitHub em dois arquivos:
-
-- `index.html`: nas linhas `og:url` e `og:image`, para a prévia do link no WhatsApp mostrar a imagem.
-- `servidor/wrangler.toml`: só quando for ativar a IA grátis.
-
-Se o repositório não se chamar `raizes-digitais`, troque também esse nome nas linhas `og:url` e `og:image`.
 
 Para testar o servidor sem a Cloudflare: `node servidor/teste.mjs`.
 
@@ -85,11 +77,22 @@ python -m http.server 8765
 
 e abra http://localhost:8765
 
-## Publicar no GitHub Pages (grátis)
+## Site no ar
 
-1. Crie uma conta em https://github.com e clique em **New repository**. Dê um nome (ex.: `raizes-digitais`), deixe **Public** e crie.
-2. Na página do repositório, clique em **uploading an existing file** e arraste `index.html`, `README.md` e as pastas `css`, `js` e `img`. Clique em **Commit changes**.
-3. Vá em **Settings > Pages**. Em **Branch**, escolha `main` e a pasta `/ (root)` e clique em **Save**.
-4. Em 1 ou 2 minutos o site fica no ar em `https://SEU-USUARIO.github.io/raizes-digitais/`. Esse é o link para compartilhar.
+- **Endereço para compartilhar:** https://imsbrito.github.io/raizes-digitais/
+- **Código:** https://github.com/imsbrito/raizes-digitais
 
-Para atualizar depois, envie de novo os arquivos alterados pelo mesmo botão de upload. **Antes de enviar, aumente o número de versão** no `index.html`: todos os `?v=6` viram `?v=7`, e assim por diante. Isso obriga o navegador de quem já visitou o site a baixar os arquivos novos.
+O site é servido de graça pelo GitHub Pages, direto da branch `main`. Cada envio para a `main` atualiza o site em 1 ou 2 minutos.
+
+## Atualizar o site
+
+1. **Aumente o número de versão** no `index.html`: todos os `?v=6` viram `?v=7`, e assim por diante. Isso obriga o navegador de quem já visitou o site a baixar os arquivos novos.
+2. Na pasta do projeto, rode:
+
+   ```
+   git add -A
+   git commit -m "O que mudou"
+   git push
+   ```
+
+O PDF do mini guia e arquivos antigos ficam de fora do site público (veja `.gitignore`).
