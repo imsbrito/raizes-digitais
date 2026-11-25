@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raízes Digitais</title>
+<meta name="description" content="Ferramentas digitais para a sala de aula, com demonstrações interativas, tutoriais e IA que cria provas e quizzes a partir da sua aula. Grátis para professores.">
+<!-- Prévia no WhatsApp e redes: troque imsbrito pelo usuário do GitHub (veja o README). -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Raízes Digitais">
+<meta property="og:title" content="Raízes Digitais: ferramentas digitais para a sala de aula">
+<meta property="og:description" content="Demonstrações interativas de 25 ferramentas e IA que transforma o conteúdo da sua aula em prova, quiz ou trabalho. Grátis para professores.">
+<meta property="og:url" content="https://imsbrito.github.io/raizes-digitais/">
+<meta property="og:image" content="https://imsbrito.github.io/raizes-digitais/img/capa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Raízes Digitais: galho de ipê florido sobre fundo verde">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 30V14' stroke='%231F5A3C' stroke-width='3'/%3E%3Cpath d='M16 16C6 16 4 6 4 3c8 0 12 5 12 13zM16 13c0-7 5-11 12-11 0 4-3 11-12 11z' fill='%233E9A62'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&display=swap">
+<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/demos.css?v=6">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="topo-in">
+    <a class="marca" href="#inicio" aria-label="Raízes Digitais, início">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 30V14" stroke="currentColor" stroke-width="2.5" fill="none"/><path class="f1" d="M16 16C6 16 4 6 4 3c8 0 12 5 12 13z"/><path class="f2" d="M16 13c0-7 5-11 12-11 0 4-3 11-12 11z"/></svg>
+      Raízes Digitais
+    </a>
+    <nav aria-label="Seções">
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#ia">IA com seu PDF</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="hero" id="inicio">
+    <div class="hero-in">
+      <div class="hero-txt">
+        <p class="rotulo">Guia para professores · UFRGS</p>
+        <h1>Tecnologia que <em>cresce</em> junto com a sua aula</h1>
+        <p class="lede">Encontre a ferramenta certa para cada momento da aula, veja cada uma funcionando numa demonstração interativa e deixe a IA transformar o conteúdo da sua aula em prova, quiz ou trabalho, de graça.</p>
+        <div class="acoes">
+          <a class="btn primario" href="#ferramentas">Ver as ferramentas</a>
+          <a class="btn contorno" href="#ia">Criar atividade com IA</a>
+        </div>
+      </div>
+      <canvas id="ramos" class="ramos" aria-hidden="true"></canvas>
+    </div>
+    <ol class="trilha" aria-label="Como usar o site">
+      <li><b>Escolha</b> pelo objetivo da aula</li>
+      <li><b>Aprenda</b> no tutorial</li>
+      <li><b>Veja</b> funcionando e treine</li>
+      <li><b>Crie</b> com a IA e o seu PDF</li>
+    </ol>
+  </section>
+
+  <section class="secao" id="ferramentas" aria-labelledby="ferr-t">
+    <div class="sec-cab">
+      <p class="rotulo">Herbário de ferramentas</p>
+      <h2 id="ferr-t">Qual ferramenta usar na sua próxima aula?</h2>
+      <p class="lede">Filtre pelo que você quer fazer. Cada ficha mostra a ferramenta funcionando numa demonstração interativa, com tutorial, treino e um prompt pronto para preparar o conteúdo com IA.</p>
+    </div>
+
+    <details class="aula" id="aula-box">
+      <summary>Sua aula <span>usada nos prompts prontos</span></summary>
+      <div class="campos">
+        <label for="f-materia">Matéria <input id="f-materia" value="Biologia"></label>
+        <label for="f-tema">Tema <input id="f-tema" value="células eucariontes e procariontes"></label>
+        <label for="f-serie">Turma <select id="f-serie" class="sel-serie"></select></label>
+        <label for="f-n">Nº de questões <input id="f-n" type="number" min="1" max="40" value="10"></label>
+      </div>
+    </details>
+
+    <div class="filtros">
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por objetivo"></div>
+      <div class="filtro-dir">
+      <select id="materia" aria-label="Filtrar por matéria"></select>
+      <input class="busca" id="busca" type="search" placeholder="Buscar (ex.: quiz, Libras, vídeo)" aria-label="Buscar ferramenta">
+    </div>
+    </div>
+    <p class="contagem" id="contagem" aria-live="polite"></p>
+    <div class="grade" id="grade"></div>
+  </section>
+
+  <section class="secao ia" id="ia" aria-labelledby="ia-t">
+    <div class="sec-cab">
+      <p class="rotulo">Laboratório de IA</p>
+      <h2 id="ia-t">Do PDF da aula para a atividade pronta</h2>
+      <p class="lede">Envie o material da sua aula e escolha o que a IA deve criar. Quiz e ligar pares viram atividades jogáveis aqui mesmo; prova, trabalho e resumo saem prontos para copiar ou baixar.</p>
+    </div>
+
+    <div class="ia-passos">
+      <div class="etapa" id="etapa-chave">
+        <h3><span class="num">1</span> Qual IA usar</h3>
+        <div class="modos" id="modos" role="radiogroup" aria-label="Qual IA usar">
+          <button type="button" role="radio" class="tipo" data-m="gratis" aria-checked="true"><b>IA grátis, sem cadastro</b><span>É só usar. Tem uma cota diária compartilhada por todos os professores.</span></button>
+          <button type="button" role="radio" class="tipo" data-m="gemini" aria-checked="false"><b>Gemini com sua chave</b><span>Mais rápida e precisa; lê até PDF escaneado. Chave grátis do Google.</span></button>
+        </div>
+        <p class="nota" id="nota-gratis">A IA grátis roda na Cloudflare, com modelos de código aberto. O PDF vira texto aqui no seu navegador e só esse texto é enviado. Não envie nomes, notas ou dados pessoais de alunos.</p>
+        <div id="bloco-chave" hidden>
+        <p class="nota">A chave é criada por você, fica salva só neste navegador e vai direto para o Google, sem passar por nenhum servidor nosso.</p>
+        <details class="mini">
+          <summary>Como conseguir a chave grátis (2 minutos)</summary>
+          <ol>
+            <li>Abra o <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a> e entre com sua conta Google.</li>
+            <li>Aceite os termos, se for o primeiro acesso.</li>
+            <li>Clique em <b>Create API key</b> (Criar chave de API).</li>
+            <li>Copie a chave e cole no campo abaixo.</li>
+          </ol>
+        </details>
+        <div class="linha">
+          <label class="vis-oculto" for="chave">Chave de API do Gemini</label>
+          <input id="chave" type="password" autocomplete="off" spellcheck="false" placeholder="Cole aqui a sua chave (começa com AIza...)">
+          <button class="btn primario" id="salvar-chave" type="button">Salvar e testar</button>
+          <button class="btn texto" id="apagar-chave" type="button">Apagar</button>
+        </div>
+        <p class="status" id="chave-status" role="status"></p>
+        <p class="nota aviso">No plano grátis do Gemini, o Google pode usar o conteúdo enviado para melhorar os produtos dele: não envie dados pessoais de alunos.</p>
+        </div>
+      </div>
+
+      <div class="etapa">
+        <h3><span class="num">2</span> O conteúdo da aula</h3>
+        <label class="soltar" id="soltar" for="pdf">
+          <input id="pdf" type="file" accept="application/pdf,.pdf">
+          <span id="pdf-nome">Arraste o PDF aqui ou clique para escolher (até 20 MB)</span>
+        </label>
+        <button class="btn texto" id="tirar-pdf" type="button" hidden>Remover PDF</button>
+        <label for="ia-texto" class="rotulo-campo">Ou escreva o tema / cole o texto da aula</label>
+        <textarea id="ia-texto" rows="4" placeholder="Ex.: Fotossíntese para o 7º ano: luz, água e gás carbônico viram glicose e oxigênio..."></textarea>
+      </div>
+
+      <div class="etapa">
+        <h3><span class="num">3</span> O que criar</h3>
+        <div class="tipos" id="tipos" role="radiogroup" aria-label="Tipo de atividade"></div>
+        <div class="campos">
+          <label for="ia-serie">Turma <select id="ia-serie" class="sel-serie"></select></label>
+          <label for="ia-n">Quantidade <input id="ia-n" type="number" min="3" max="30" value="8"></label>
+          <label for="ia-obs" class="largo">Pedido extra (opcional) <input id="ia-obs" placeholder="Ex.: foque em mitose, use exemplos do Cerrado"></label>
+        </div>
+        <button class="btn primario grande" id="gerar" type="button">Gerar atividade</button>
+        <p class="status" id="gerar-status" role="status"></p>
+      </div>
+    </div>
+
+    <div class="resultado" id="resultado" hidden>
+      <div class="res-cab">
+        <h3 id="res-titulo">Resultado</h3>
+        <div class="linha">
+          <button class="btn primario" id="link-alunos" type="button" hidden>Link para os alunos</button>
+          <button class="btn contorno" id="projetar" type="button" hidden>Projetar na tela cheia</button>
+          <button class="btn contorno" id="imprimir" type="button">Imprimir ou salvar PDF</button>
+          <button class="btn contorno" id="copiar-res" type="button">Copiar texto</button>
+          <button class="btn texto" id="baixar-res" type="button">Baixar .txt</button>
+        </div>
+      </div>
+      <div class="compartilhar" id="compartilhar" hidden>
+        <p><b>Mande este link para a turma.</b> Cada aluno joga no próprio celular, sem cadastro. O quiz vai dentro do link: nada fica guardado em servidor.</p>
+        <div class="linha">
+          <label class="vis-oculto" for="link-txt">Link do jogo</label>
+          <input id="link-txt" readonly>
+          <button class="btn primario" id="copiar-link" type="button">Copiar link</button>
+          <a class="btn contorno" id="whats" href="#" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+        </div>
+        <p class="status" id="link-status" role="status"></p>
+      </div>
+      <div id="res-corpo"></div>
+      <p class="nota">Revise tudo antes de levar para a turma: a IA pode errar fatos ou fugir do conteúdo enviado.</p>
+    </div>
+
+    <div class="etapa pergunta-rapida">
+      <h3>Pergunta rápida</h3>
+      <p class="nota">Tire uma dúvida, peça uma ideia de aula ou um exemplo. Usa a IA escolhida no passo 1.</p>
+      <form id="chat-f" class="chat-f">
+        <label class="vis-oculto" for="chat-in">Sua pergunta</label>
+        <textarea id="chat-in" rows="2" placeholder="Ex.: Me dê 3 ideias de atividade prática sobre decomposição para o 6º ano"></textarea>
+        <button class="btn primario" id="chat-bt" type="submit">Perguntar</button>
+      </form>
+      <p class="status" id="chat-status" role="status"></p>
+      <pre class="res-texto" id="chat-resp" hidden></pre>
+    </div>
+  </section>
+
+  <section class="secao sobre" id="sobre" aria-labelledby="sobre-t">
+    <div class="sec-cab">
+      <p class="rotulo">Quem cultivou</p>
+      <h2 id="sobre-t">Sobre o projeto</h2>
+    </div>
+    <div class="sobre-txt">
+      <p>O <b>Raízes Digitais</b> nasceu do <em>Mini Guia: Criando Atividades Didáticas com Inteligência Artificial</em>, elaborado por <b>Raquel da Silva Henrique</b> e <b>Renata Lopes Casara</b>, licenciandas em Ciências Biológicas da Universidade Federal do Rio Grande do Sul, na disciplina Práticas Integradoras II.</p>
+      <p>A tecnologia, quando usada de forma consciente, se torna uma aliada do ensino e da aprendizagem. Este site reúne ferramentas para professores de qualquer matéria, com atenção especial ao ensino de Ciências e Biologia.</p>
+      <p class="nota">As demonstrações e os treinos usam telas genéricas, criadas para ensinar como cada ferramenta funciona. Não são as ferramentas reais nem têm ligação com as empresas. Planos grátis e limites mudam: confira no site de cada uma.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p>Raízes Digitais · Licenciatura em Ciências Biológicas · UFRGS</p>
+</footer>
+
+<section class="aluno" id="aluno" hidden aria-labelledby="aluno-t">
+  <p class="marca"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 30V14" stroke="currentColor" stroke-width="2.5" fill="none"/><path class="f1" d="M16 16C6 16 4 6 4 3c8 0 12 5 12 13z"/><path class="f2" d="M16 13c0-7 5-11 12-11 0 4-3 11-12 11z"/></svg> Raízes Digitais</p>
+  <h1 id="aluno-t">Atividade</h1>
+  <div id="aluno-jogo"></div>
+  <p class="nota">Atividade criada por um professor com o <a href="./">Raízes Digitais</a>.</p>
+</section>
+
+<div id="impressao" hidden></div>
+
+<dialog id="ficha" aria-labelledby="fi-nome">
+  <div class="ficha">
+    <div class="fi-cab">
+      <div>
+        <p class="rotulo" id="fi-tags"></p>
+        <h2 id="fi-nome"></h2>
+      </div>
+      <button class="fechar" id="fi-fechar" type="button" aria-label="Fechar">✕</button>
+    </div>
+    <p id="fi-faz"></p>
+    <p class="custo" id="fi-custo"></p>
+    <div class="abas" role="tablist" aria-label="Partes da ficha">
+      <button role="tab" id="aba-demo" aria-controls="pn-demo" aria-selected="true" type="button">▶ Veja funcionando</button>
+      <button role="tab" id="aba-tutorial" aria-controls="pn-tutorial" aria-selected="false" type="button">Tutorial</button>
+      <button role="tab" id="aba-sim" aria-controls="pn-sim" aria-selected="false" type="button">Treino</button>
+      <button role="tab" id="aba-prompt" aria-controls="pn-prompt" aria-selected="false" type="button">Prompt pronto</button>
+    </div>
+    <div class="painel" id="pn-demo" role="tabpanel" aria-labelledby="aba-demo"></div>
+    <div class="painel" id="pn-tutorial" role="tabpanel" aria-labelledby="aba-tutorial" hidden>
+      <ol class="passos" id="fi-passos"></ol>
+      <p class="dica" id="fi-dica"></p>
+      <div class="linha" id="fi-links"></div>
+    </div>
+    <div class="painel" id="pn-sim" role="tabpanel" aria-labelledby="aba-sim" hidden></div>
+    <div class="painel" id="pn-prompt" role="tabpanel" aria-labelledby="aba-prompt" hidden>
+      <p class="nota">Preenchido com os dados de "Sua aula". Cole no ChatGPT, Gemini ou Claude e leve o resultado para a ferramenta.</p>
+      <pre class="prompt" id="fi-prompt" tabindex="0"></pre>
+      <div class="linha">
+        <button class="btn primario" id="fi-copiar" type="button">Copiar prompt</button>
+        <a class="btn contorno" href="https://gemini.google.com/" target="_blank" rel="noopener">Abrir Gemini</a>
+        <a class="btn contorno" href="https://chatgpt.com/" target="_blank" rel="noopener">Abrir ChatGPT</a>
+      </div>
+      <p class="status" id="fi-copiado" role="status"></p>
+    </div>
+  </div>
+</dialog>
+
+<script src="js/config.js?v=6"></script>
+<script src="js/ferramentas.js?v=6"></script>
+<script src="js/app.js?v=6"></script>
+<script src="js/demos.js?v=6"></script>
+<script src="js/ia.js?v=6"></script>
+</body>
+</html>

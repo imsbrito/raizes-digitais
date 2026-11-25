@@ -1,0 +1,8 @@
+# Material das autoras e versão antiga: não vão para o site público
+*.pdf
+ferramenta-professor.html
+
+# Configuração local do Claude e ferramentas
+.claude/
+node_modules/
+servidor/.wrangler/
