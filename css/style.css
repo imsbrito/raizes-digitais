@@ -74,7 +74,7 @@ p { margin: 0; }
 .trilha b { color: var(--tinta); }
 
 /* Seções */
-.secao { padding-block: 64px; display: grid; gap: 24px; }
+.secao { padding-block: 64px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
 .sec-cab { display: grid; gap: 10px; }
 .sec-cab h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 22ch; }
 .ia { max-width: none; background: var(--faixa); border-block: 1px solid var(--linha); }

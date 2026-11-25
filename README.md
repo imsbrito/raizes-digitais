@@ -86,7 +86,7 @@ O site é servido de graça pelo GitHub Pages, direto da branch `main`. Cada env
 
 ## Atualizar o site
 
-1. **Aumente o número de versão** no `index.html`: todos os `?v=6` viram `?v=7`, e assim por diante. Isso obriga o navegador de quem já visitou o site a baixar os arquivos novos.
+1. **Aumente o número de versão** no `index.html`: todos os `?v=7` viram `?v=8`, e assim por diante. Isso obriga o navegador de quem já visitou o site a baixar os arquivos novos.
 2. Na pasta do projeto, rode:
 
    ```
