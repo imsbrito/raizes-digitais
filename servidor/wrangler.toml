@@ -6,7 +6,7 @@ compatibility_date = "2026-11-01"
 binding = "AI"
 
 [vars]
-# Sites que podem usar a IA, separados por vírgula. Troque imsbrito pelo seu usuário do GitHub.
+# Sites que podem usar a IA, separados por vírgula.
 ORIGENS = "https://imsbrito.github.io,http://localhost:8765"
 # Modelo principal. Se a Cloudflare aposentar este, o servidor tenta os reservas listados em worker.js.
 MODELO = "@cf/meta/llama-4-scout-17b-16e-instruct"
